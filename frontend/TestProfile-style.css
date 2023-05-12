@@ -100,3 +100,9 @@
         transition: all 1s;
     }
 }
+
+#pop-up-action-info {
+    display: none;
+    margin: auto;
+    position: relative;
+}
