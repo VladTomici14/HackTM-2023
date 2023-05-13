@@ -330,7 +330,7 @@
                             <th scope="col">Contribution</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="doctorsTable">
                         <tr>
                             <th scope="row">1</th>
                             <th>Jessica Lipschitz</th>
@@ -455,6 +455,8 @@
                     title.innerHTML = "This is a report";
                     text.innerHTML = "This is some text wrote by my own therapist. Hope it helps. If not, just say it!"; 
                     break;
+                default:
+                    break;
             }
         }
 
@@ -515,6 +517,18 @@
             cardDecksCode += "</div>";
         }
         document.getElementById("presentCards").innerHTML = cardDecksCode;
+        
+        //numOfDoctors
+        var doctorTableCode = ""
+        for(let i=1;i<=numOfDoctors;i++) {
+            var currentFullName = doctors[i].firstName + " " + doctors[i].lastName;
+            var currentOcupation = doctors[i].occupation;
+            doctorTableCode += "<tr><th scope=\"row\">" + i + "</th>";
+            doctorTableCode += "<th>" + currentFullName + "</th>";
+            doctorTableCode += "<th>" + currentOcupation + "</th>";
+            doctorTableCode += "<th><button type=\"button\" class=\"btn btn-outline-dark btn-md\" onclick=\"presentPopUpFrom(20)\">Actions</button></th></tr>";
+        }
+        document.getElementById("doctorsTable").innerHTML = doctorTableCode;
     </script>
 </body>
 
