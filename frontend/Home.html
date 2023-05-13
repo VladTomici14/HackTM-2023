@@ -10,16 +10,20 @@
         }
         
         .navbar {
-            background: linear-gradient(225deg, rgba(255,255,255,1) 0%, rgba(250,0,0,1) 27.59%, rgba(108,22,95,1) 76.35%, rgba(39,32,32,1) 100%);
+            background-color: #045de9;
+            background-image: linear-gradient(315deg, #045de9 0%, #09c6f9 74%);
             border-radius: 25px; /* Rounded corners */
             overflow: hidden;
-            margin-left: 150px;
-            margin-right: 150px;
+            margin-left: 75px;
+            margin-right: 350px;
             margin-top: 10px;
+            text-align: center;
             
         }
         
-        .navbar a {
+        .navLog{
+        }
+        .nav {
             float: left;
             display: block;
             color: #fff; /* Text color */
@@ -36,15 +40,25 @@
         .navbar a.active {
             background-color: #004080; /* Active link background color */   
         }
+
+        .navbar a{
+            margin-left: 40px;
+            margin-right: 40px;
+        }
     </style>
 </head>
 <body>
     <!-- HTML code for the navigation bar -->
-    <div class="navbar">
-        <a  href="#">Home</a>
-        <a href="#" class="""">About</a>
-        <a href="#">Services</a>
-        <a href="#">Contact</a>
+    <div class="">
+        <p class="navbar">
+            <a class="nav" href="#">Home</a>
+            <a class="nav" href="#">About</a>
+            <a class="nav" href="#">Services</a>
+            <a class="nav" href="#">Contact</a>
+        </p>
+        <p class="navbar">
+            <a class="nav" href="#">Login/Register</a>        
+        </p>
     </div>
-</body>
-</html>
+    </body>
+    </html>
