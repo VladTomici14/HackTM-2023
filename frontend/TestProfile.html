@@ -89,9 +89,6 @@
                                 <h6 class="mb-0">Creation Date</h6>
                                 <span class="text-secondary">12 May 2023</span> <!--to be added-->
                             </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                                <a class="btn btn-info " target="__blank" style="color:white;" onclick="presentPopUpFrom(17)">Edit</a>
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -129,7 +126,7 @@
                             <hr/>
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <a class="btn btn-info " target="__blank" style="color:white;" onclick="presentPopUpFrom(18)">Edit</a>
+                                    <a class="btn btn-info " target="__blank" style="color:white;" onclick="showPopUp2()">Edit</a>
                                 </div>
                             </div>
                         </div>
@@ -352,10 +349,10 @@
                 <!--</button> -->
                 <h2 class="text-center" id="pop-up-header">Report</h2>
             </div>
-            <div class="card-body">
+            <div class="card-body" id="pop-up-tat">
                 <h5 class="card-title" id="pop-up-title">This is a report</h5>
                 <p class="card_text" id="pop-up-text">123</p>
-                <div class="row">
+                <div class="row" id="pop-up-buttons">
                     <div class="col-md-auto mr-auto">
                         <button type="button" class="btn btn-primary" name="Usefull" onclick="rateUsefull()">Rate Usefull</button>
                     </div>
@@ -369,76 +366,112 @@
             </div>
         </div>
     </div>
+    <div id="pop-up-action-edit1" class="pop-up" style="display: none;">
+        <div class="pop-up-container card">
+            <div class="card-header">
+                <h2 class="text-center" id="pop-up-header">Edit Data</h2>
+            </div>
+            <div class="card-body" id="pop-up-tat">
+                <form>
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="name" class="form-control" id="fullName" placeholder="Name" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="stage">Stage: ASD Level</label>
+                        <select class="form-control" id="stage">
+                            <option id="stage1">1</option>
+                            <option id="stage2">2</option>
+                            <option id="stage3">3</option>
+                        </select>
+                    </div>
+                    
+                </form>
+                <div class="row" id="pop-up-buttons">
+                    <div class="col-md-auto mr-auto">
+                        <buttom class="btn btn-outline-primary" type="submit" onclick="closePopUp2()">Save Changes</buttom>
+                    </div>
+                    <div class="col-auto">
+                        <button type="button" class="btn btn-danger" name="cancel" onclick="closePopUp2()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script>
-        function showPopUp() {
-            document.getElementById("pop-up-action-info").style.display = "block";
+        function toggle_blur() {
             const blurElem = document.getElementById("blur");
             blurElem.classList.toggle("active");
+        }
+
+        function showPopUp() {
+            document.getElementById("pop-up-action-info").style.display = "block";
+            toggle_blur();
+        }
+
+        function showPopUp2() {
+            document.getElementById("pop-up-action-edit1").style.display = "block";
+            toggle_blur();
         }
 
         function loadTextToPopUp(x) {
             const header = document.getElementById("pop-up-header");
             const title = document.getElementById("pop-up-title");
             const text = document.getElementById("pop-up-text");
-            console.log(x);
-            console.log(x.toString() == "19");
+            //const titleAndText = document.getElementById("pop-up-tat");
             switch(x.toString()) {
                 case "1":
                     break;
-                case 2:
+                case "2":
                     break;
-                case 3:
+                case "3":
                     break;
-                case 4:
+                case "4":
                     break;
-                case 5:
+                case "5":
                     break;
-                case 6:
+                case "6":
                     break;
-                case 7:
+                case "7":
                     break;
-                case 8:
+                case "8":
                     break;
-                case 9:
+                case "9":
                     break;
-                case 10:
+                case "10":
                     break;
-                case 11:
+                case "11":
                     break;
-                case 12:
+                case "12":
                     break;
-                case 13:
+                case "13":
                     break;
-                case 14:
+                case "14":
                     break;
-                case 15:
+                case "15":
                     break;
-                case 16:
+                case "16":
                     break;
-                case 17: //edit personal data
-
-                    break;
-                case 18: //edit disease data
-
-                    break;
-
                 //temp
                 case "19": //first phsychiatrist data
                     header.innerHTML = "Report";
                     title.innerHTML = "This is a report";
                     text.innerHTML = "This is some text wrote by my own therapist. Hope it helps. If not, just say it!";
+                    //titleAndText.innerHTML = "<p class=\"card_text\">123</p>"; 
                     break;
             }
         }
 
-        function openPopUp() {
-            showPopUp();
-        }
-
         function closePopUp() {
             document.getElementById("pop-up-action-info").style.display = "none";
-            const blurElem = document.getElementById("blur");
-            blurElem.classList.toggle("active");
+            toggle_blur();
+        }
+
+        function closePopUp2() {
+            document.getElementById("pop-up-action-edit1").style.display = "none";
+            toggle_blur();
+            document.getElementById("fullName").value="";
+            document.getElementById("stage1").selected="selected";
         }
 
         function presentPopUpFrom(x) {
