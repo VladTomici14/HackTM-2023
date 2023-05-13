@@ -1,0 +1,51 @@
+body {
+    font-family: Arial, sans-serif;
+    background:linear-gradient( to right, rgba(186,243,255,1) 0%, rgba(98,170,255,1) 65%) ;
+  }
+
+  .register-container {
+    width: 500px;
+    padding: 20px;
+    margin: 0 auto;
+    margin-top: 100px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    float :left ;
+    
+}
+
+  .register-container h2 {
+    text-align: center;
+    color: #4a4a4a;
+    margin-bottom: 20px;
+  }
+
+  .register-container label,
+  .register-container input[type="text"],
+  .register-container input[type="password"] {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .register-container input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(186,243,255,1) ; /* Updated to red color */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Added transition effect */
+  }
+
+  .register-container input[type="submit"]:hover {
+    background-color: rgba(98,170,255,1) ; /* Darker red on hover */
+  }
+  .space
+  {
+    padding-top: 100px;
+  }
