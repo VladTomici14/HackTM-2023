@@ -165,3 +165,27 @@
     margin: 0;
     padding: 0;
 }
+
+.plus-button {
+    color: gray;
+    background-color: transparent;
+    border: none;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+    border-radius: 50%;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top:0;
+    padding-bottom: 15px;
+    font-size: 80px;
+    margin: auto;
+}
+
+.plus-button:hover {
+    background-color: rgb(197, 197, 197);
+    text-decoration: none;
+    color: white;
+}
