@@ -279,7 +279,7 @@
             <div class="row" id="presentCards">
                 <div class="card-deck">
                     <div class="card pecs-card">
-                        <img class="card-img-top" src="res/water.png" alt="Card image cap"/>
+                        <a onclick="showPopUp3()"><img class="card-img-top" src="res/water.png" alt="Card image cap"/></a>
                         <hr/>
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
@@ -290,7 +290,7 @@
                         </div>
                     </div>
                     <div class="card pecs-card">
-                        <img class="card-img-top" src="res/water.png" alt="Card image cap"/>
+                        <a onclick="showPopUp3()"><img class="card-img-top" src="res/water.png" alt="Card image cap"/></a>
                         <hr/>
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
@@ -301,7 +301,7 @@
                         </div>
                     </div>
                     <div class="card pecs-card">
-                        <img class="card-img-top" src="res/water.png" alt="Card image cap"/>
+                        <a onclick="showPopUp3()"><img class="card-img-top" src="res/water.png" alt="Card image cap"/></a>
                         <hr/>
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
@@ -388,10 +388,28 @@
                 </form>
                 <div class="row" id="pop-up-buttons">
                     <div class="col-md-auto mr-auto">
-                        <buttom class="btn btn-outline-primary" type="submit" onclick="closePopUp2()">Save Changes</buttom>
+                        <button class="btn btn-outline-primary" type="submit" onclick="closePopUp2()">Save Changes</button>
                     </div>
                     <div class="col-auto">
                         <button type="button" class="btn btn-danger" name="cancel" onclick="closePopUp2()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="pop-up-action-image" class="pop-up" style="display: none;">
+        <div class="pop-up-container card">
+            <div class="card-header">
+                <h2 class="text-center" id="pop-up-header">Image</h2>
+            </div>
+            <!--<div class="card-body" id="pop-up-tat">
+            </div> -->
+            <img class="card-img-top" src="res/water.png" alt="Card image cap" />
+            <div class="card-body">
+                <div class="row justify-content-between">
+                    <div class="col-md-auto mr-auto"></div>
+                    <div class="col-md-auto">
+                        <button tpye="button" class="btn btn-danger" name="cancel" onclick="closePopUp3()">Cancel</button>
                     </div>
                 </div>
             </div>
@@ -410,6 +428,11 @@
 
         function showPopUp2() {
             document.getElementById("pop-up-action-edit1").style.display = "block";
+            toggle_blur();
+        }
+
+        function showPopUp3() {
+            document.getElementById("pop-up-action-image").style.display = "block";
             toggle_blur();
         }
 
@@ -462,6 +485,11 @@
 
         function closePopUp() {
             document.getElementById("pop-up-action-info").style.display = "none";
+            toggle_blur();
+        }
+
+        function closePopUp3() {
+            document.getElementById("pop-up-action-image").style.display = "none";
             toggle_blur();
         }
 
