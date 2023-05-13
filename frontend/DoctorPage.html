@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Doctor profile | </title>
+    <meta name="description" content="Doctor profile page | Pacients" />
+    <meta name="keywords" content="profile, status" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="ro" />
+    <meta charset="utf-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="TestProfile-style.css" />
+    <link rel="icon" href="res/logo.ico" tpye="img/ico"/>
+    <style>
+    </style>
+</head>
+<body>
+    <div class="container" id="blur">
+        <nav class="navbar">
+            <div class="left">
+                <h3 class="nav-h3">NeuroVault</h3>
+            </div>
+            <div class="right">
+                <ul class="list">
+                    <li><a href="#">Home</a></li>
+                    <li class="active"><a class="active-a" href="#">Pacients</a></li>
+                    <li><a href="#">Log out</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="main-body">
+            <nav aria-label="breadcrumb" class="main-breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Doctor</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Doctor ID</li> <!-- se adauga id-ul sau numele pacientului-->
+                </ol>
+            </nav>
+            <div class="row gutters-sm">
+                <table class="table table-striped">
+                    <thead class="thead-light">
+                        <tr>
+                            <th class="text-center" scope="col" colspan="5"><h3>Pacients</h3></th>
+                        </tr>
+                    </thead>
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Info</th>
+                            <th scope="col">Go to</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <th>Jhon</th>
+                            <th>Doe</th>
+                            <th class="text-secondary">ASD LV1</th>
+                            <th><a class="btn btn-outline-primary" href="TestProfile.html">Pacient</button></th>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <th>Harvey</th>
+                            <th>McCLaren</th>
+                            <th class="text-secondary">ASD LV3</th>
+                            <th><a class="btn btn-outline-primary" href="TestProfile.html">Pacient</button></th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <br/>
+            <div class="row gutters-sm">
+                <a class="plus-button"  onclick="openPopUp()">+</a>
+            </div>
+        </div>
+    </div>
+    <div id="pop-up-action-info" class="pop-up" style="display: none;">
+        <div class="pop-up-container card">
+            <div class="card-header">
+                </button>
+                <h2 class="text-center">Report</h2>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">This is a report</h5>
+                <form>
+                    <div class="form-group">
+                        <label for="firstName">Pacient First Name</label>
+                        <input type="name" class="form-control" id="firstName" placeholder="First Name"/>  
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Pacient First Name</label>
+                        <input type="name" class="form-control" id="lastName" placeholder="Last Name"/>  
+                    </div>
+                    <div class="form-group">
+                        <label for="cnp">Pacient First Name</label>
+                        <input type="number" class="form-control" id="cnp" placeholder="CNP"/> 
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col-md-auto mr-auto">
+                        <button type="button" class="btn btn-primary" name="Usefull" onclick="addPacient()">Add Pacient</button>
+                    </div>
+                    <div class="col-auto">
+                        <button type="button" class="btn btn-danger" name="Exit" onclick="closePopUp()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <script>
+        function openPopUp() {
+            document.getElementById("pop-up-action-info").style.display = "block";
+            const blurElem = document.getElementById("blur");
+            blurElem.classList.toggle("active");
+        }
+
+        function closePopUp() {
+            document.getElementById("pop-up-action-info").style.display = "none";
+            const blurElem = document.getElementById("blur");
+            blurElem.classList.toggle("active");
+            document.getElementById("firstName").value = "";
+            document.getElementById("lastName").value = "";
+            document.getElementById("cnp").value = "";
+        }
+    </script>
+</body>
+</html>
