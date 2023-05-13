@@ -4,13 +4,23 @@ const client = new Client({
     host: "localhost",
     user: "vladt",
     port: 5432,
-    password: "lescovita14",
-    database: "vladt"
+    password: "garland4",
+    database: "users"
+})
+
+client.query('SELECT * FROM "users"', (err, res) => {
+    if (err) {
+        console.error("Error executing query", err)
+        return
+    }
+    console.log("Querry results: ", results.rows)
 })
 
 client.connect()
 
-pullFromServer("user")
+
+// -------- pulling data from the db -------
+// pullFromServer("user")
 function pullFromServer(table) {
     client.query(`SELECT * public.`+table, (err, res) => {
         if (!err) {
