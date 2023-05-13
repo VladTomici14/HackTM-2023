@@ -402,8 +402,6 @@
             <div class="card-header">
                 <h2 class="text-center" id="pop-up-header">Image</h2>
             </div>
-            <!--<div class="card-body" id="pop-up-tat">
-            </div> -->
             <img class="card-img-top" src="res/water.png" alt="Card image cap" />
             <div class="card-body">
                 <div class="row justify-content-between">
@@ -537,7 +535,7 @@
                 var imgPath = "\"res/" + imgName + "\"";
 
                 cardDecksCode += "<div class=\"card pecs-card\">";
-                cardDecksCode += "<img class=\"card-img-top\" src=" + imgPath + " alt=\"Card image cap\"/><hr/><div class=\"card-body\">";
+                cardDecksCode += "<a onclick=\"showPopUp3()\"><img class=\"card-img-top\" src=" + imgPath + " alt=\"Card image cap\"/></a><hr/><div class=\"card-body\">";
                 cardDecksCode += "<h5 class=\"card-title\">" + currentTitle + "</h5>"; /*add card title*/
                 cardDecksCode += "<p class=\"card-text\">" + currentText + "</p></div>"; /*add card text*/
                 cardDecksCode += "<div class=\"card-footer\"><small class=\"text-muted\">Last updated 3 mins ago</small></div></div>";
