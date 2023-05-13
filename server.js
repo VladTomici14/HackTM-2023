@@ -9,8 +9,8 @@ const passport = require('passport')
 const flash = require('express-flash')
 const session = require('express-session')
 const methodOverride = require('method-override')
-
 const initializePassport = require('./passport-config')
+
 initializePassport(
     passport,
     email => users.find(user => user.email === email),
@@ -19,11 +19,11 @@ initializePassport(
 
 const users = []
 
-app.set('view-engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
 app.use(flash())
 app.use(session({
-    secret: "parola",
+    // secret: "process.env.SESSION_SECRET", // TODO: see where this needs to be configured
+    secret: "bodo",
     resave: false,
     saveUninitialized: false
 }))
@@ -58,22 +58,28 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
             email: req.body.email,
             password: hashedPassword
         })
+        console.log(users);
         res.redirect('/login')
-    } catch {
+    } catch (e) {
+        console.log(e);
         res.redirect('/register')
     }
 })
 
 app.delete('/logout', (req, res) => {
-    req.logOut()
-    res.redirect('/login')
+    req.logOut(req.user, err => {
+        if (err) return next(err)
+        res.redirect("/")
+    })
 })
 
+// -------------------------------------------------------
+// ------- functions for checking authentication --------
+// -------------------------------------------------------
 function checkAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return next()
     }
-
     res.redirect('/login')
 }
 
