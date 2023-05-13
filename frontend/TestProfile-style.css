@@ -167,7 +167,7 @@
 }
 
 .plus-button {
-    color: gray;
+    color: gray !important;
     background-color: transparent;
     border: none;
     display: inline-block;
@@ -187,5 +187,5 @@
 .plus-button:hover {
     background-color: rgb(197, 197, 197);
     text-decoration: none;
-    color: white;
+    color: white !important;
 }
