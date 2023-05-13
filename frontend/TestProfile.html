@@ -10,6 +10,7 @@
     <meta charset="utf-8" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="TestProfile-style.css" />
+    <link rel="icon" href="res/logo.ico" tpye="img/ico"/>
     <style>
     </style>
 </head>
@@ -18,14 +19,12 @@
     <div class="container" id="blur">
         <nav class="navbar">
             <div class="left">
-                <h3>NeuroVault</h3>
+                <h3 class="nav-h3">NeuroVault</h3>
             </div>
             <div class="right">
                 <ul class="list">
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">Gallery</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">About Us</a></li>
+                    <li class="active"><a class="active-a" href="#">Pacients</a></li>
                     <li><a href="#">Log out</a></li>
                 </ul>
             </div>
@@ -154,80 +153,110 @@
                         </div>
                     </div>
                     <hr/>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3 class="text-center">Feelings</h3>
+                        </div>
+                    </div>
                     <div class="row gutters-sm">
                         <div class="col-sm-6 mb-3">
-                            <div class="card mb-3">
+                            <div class="card mb-3 pecs-card">
                                 <div class="card-body">
                                     <h5 class="text-center">Frustration</h5>
                                     <hr/>
-                                    <h6 class="text-success">Causes</h6>
-                                    <p class="text-center">to be completed</p>
-                                    <hr/>
-                                    <h6 class="text-success">Behavioral Consequences</h6>
-                                    <p class="text-center">to be completed</p>
-                                    <hr/>
-                                    <h6 class="text-success">Prevention</h6>
-                                    <p class="text-center">to be completed</p>
+                                    <div class="row text-center">
+                                        <div class="col">
+                                            <button type="button" class="btn btn-primary btn-md" name="Usefull" onclick="presentPopUpFrom(1)">Causes</button>
+                                        </div>
+                                        <div class="col">
+                                            <button type="button" class="btn btn-secondary btn-md" name="Useless" onclick="presentPopUpFrom(2)">BC</button>
+                                        </div>
+                                        <div class="col">
+                                            <button type="button" class="btn btn-info btn-md" name="Exit" onclick="presentPopUpFrom(3)">Prevention</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="card mb-3">
+                            <div class="card mb-3 pecs-card">
                                 <div class="card-body">
                                     <h5 class="text-center">Anxiety</h5>
                                     <hr/>
-                                    
+                                    <div class="row text-center">
+                                        <div class="col">
+                                            <button type="button" class="btn btn-primary btn-md" name="Usefull" onclick="presentPopUpFrom(4)">Causes</button>
+                                        </div>
+                                        <div class="col">
+                                            <button type="button" class="btn btn-secondary btn-md" name="Useless" onclick="presentPopUpFrom(5)">BC</button>
+                                        </div>
+                                        <div class="col">
+                                            <button type="button" class="btn btn-info btn-md" name="Exit" onclick="presentPopUpFrom(6)">Prevention</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="card mb-3">
-                                <div class="card-body">
-                                    <h5 class="text-center">Sensory Overload</h5>
+                                <div class="card-body pecs-card">
+                                    <h5 class="text-center">Happiness</h5>
                                     <hr/>
-                                    <h6 class="text-success">Lower sensory threshold on</h6>
-                                    <p class="text-center">to be completed</p>
-                                    <hr/>
-                                    <h6 class="text-success">Overload on</h6>
-                                    <p class="text-center">to be completed</p>
+                                    <div class="row text-center">
+                                        <div class="col">
+                                            <button type="button" class="btn btn-primary btn-md" name="Usefull" onclick="presentPopUpFrom(7)">Causes</button>
+                                        </div>
+                                        <div class="col">
+                                            <button type="button" class="btn btn-secondary btn-md" name="Useless" onclick="presentPopUpFrom(8)">BC</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-6 mb-3">
-                            <div class="card mb-3">
-                                <div class="card-body">
-                                    <h5 class="text-center">Happiness</h5>
-                                    <hr/>
-                                    <h6 class="text-success">Causes</h6>
-                                    <p class="text-center">te be completed
-                                    </p>
-                                    <hr/>
-                                    <h6 class="text-success">Behavioral Consequences</h6>
-                                    <p class="text-center">to be completed</p>
-                                </div>
-                            </div>
-                            <div class="card mb-3">
+                            <div class="card mb-3 pecs-card">
                                 <div class="card-body">
                                     <h5 class="text-center">Sadness</h5>
                                     <hr/>
-                                    <h6 class="text-success">Causes</h6>
-                                    <p class="text-center">to be completed</p>
-                                    <hr/>
-                                    <h6 class="text-success">Behavioral Consequences</h6>
-                                    <p class="text-center">to be completed</p>
-                                    <hr/>
-                                    <h6 class="text-success">Prevention</h6>
-                                    <p class="text-center">to be completed</p>
+                                    <div class="row text-center">
+                                        <div class="col">
+                                            <button type="button" class="btn btn-primary btn-md" name="Usefull" onclick="presentPopUpFrom(9)">Causes</button>
+                                        </div>
+                                        <div class="col">
+                                            <button type="button" class="btn btn-secondary btn-md" name="Useless" onclick="presentPopUpFrom(10)">BC</button>
+                                        </div>
+                                        <div class="col">
+                                            <button type="button" class="btn btn-info btn-md" name="Exit" onclick="presentPopUpFrom(11)">Prevention</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="card mb-3">
+                            <div class="card mb-3 pecs-card">
                                 <div class="card-body">
                                     <h5 class="text-center">Anger</h5>
                                     <hr/>
-                                    <h6 class="text-success">Causes</h6>
-                                    <p class="text-center">to be completed</p>
+                                    <div class="row text-center">
+                                        <div class="col">
+                                            <button type="button" class="btn btn-primary btn-md" name="Usefull" onclick="presentPopUpFrom(12)">Causes</button>
+                                        </div>
+                                        <div class="col">
+                                            <button type="button" class="btn btn-secondary btn-md" name="Useless" onclick="presentPopUpFrom(13)">BC</button>
+                                        </div>
+                                        <div class="col">
+                                            <button type="button" class="btn btn-info btn-md" name="Exit" onclick="presentPopUpFrom(14)">Prevention</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mb-3 pecs-card">
+                                <div class="card-body">
+                                    <h5 class="text-center">Sensory Overload</h5>
                                     <hr/>
-                                    <h6 class="text-success">Behavioral Consequences</h6>
-                                    <p class="text-center">to be completed</p>
-                                    <hr/>
-                                    <h6 class="text-success">Prevention</h6>
-                                    <p class="text-center">to be completed</p>
+                                    <div class="row text-center">
+                                        <div class="col">
+                                            <button type="button" class="btn btn-primary btn-md" name="Usefull" onclick="presentPopUpFrom(15)">LSD</button>
+                                        </div>
+                                        <div class="col">
+                                            <button type="button" class="btn btn-secondary btn-md" name="Useless" onclick="presentPopUpFrom(16)">Overload</button>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -242,7 +271,7 @@
             <div class="row">
                 <div class="card-deck">
                     <div class="card pecs-card">
-                        <img class="card-img-top" src="..." alt="Card image cap"/>
+                        <img class="card-img-top" src="res/water.png" alt="Card image cap"/>
                         <hr/>
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
@@ -253,7 +282,7 @@
                         </div>
                     </div>
                     <div class="card pecs-card">
-                        <img class="card-img-top" src="..." alt="Card image cap"/>
+                        <img class="card-img-top" src="res/water.png" alt="Card image cap"/>
                         <hr/>
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
@@ -264,7 +293,7 @@
                         </div>
                     </div>
                     <div class="card pecs-card">
-                        <img class="card-img-top" src="..." alt="Card image cap"/>
+                        <img class="card-img-top" src="res/water.png" alt="Card image cap"/>
                         <hr/>
                         <div class="card-body">
                             <h5 class="card-title">Card title</h5>
@@ -316,15 +345,15 @@
                 therapist. Hope it helps. If not, just say it!
                 </p>
                 <div class="row">
-                <div class="col-md-auto mr-auto">
-                    <button type="button" class="btn btn-primary" name="Usefull" onclick="rateUsefull()">Rate Usefull</button>
-                </div>
-                <div class="col-md">
-                    <button type="button" class="btn btn-secondary" name="Useless" onclick="rateNotUsefull()">Rate Not Usefull</button>
-                </div>
-                <div class="col-auto">
-                    <button type="button" class="btn btn-danger" name="Exit" onclick="closePopUp()">Close</button>
-                </div>
+                    <div class="col-md-auto mr-auto">
+                        <button type="button" class="btn btn-primary" name="Usefull" onclick="rateUsefull()">Rate Usefull</button>
+                    </div>
+                    <div class="col-md">
+                        <button type="button" class="btn btn-secondary" name="Useless" onclick="rateNotUsefull()">Rate Not Usefull</button>
+                    </div>
+                    <div class="col-auto">
+                        <button type="button" class="btn btn-danger" name="Exit" onclick="closePopUp()">Close</button>
+                    </div>
                 </div>
             </div>
         </div>

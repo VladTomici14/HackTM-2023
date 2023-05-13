@@ -55,6 +55,9 @@
     color: white;
 }
 
+.nav-h4 {
+    padding-bottom: 0;
+}
 
 .navbar {
     background: rgb(186,243,255);
@@ -64,6 +67,7 @@
     justify-content: space-around;
     align-items: center;
     line-height: auto;
+    padding-bottom: 0;
 }
 
 .right ul {
@@ -85,6 +89,7 @@
     border-radius: 7px;
     color: rgb(21, 91, 203);
 }
+
 
 @media screen and (max-width:805px) {
     .list {
@@ -153,4 +158,10 @@
 
 .pecs-card {
     border: 1px solid rgba(0,0,0,.2);
+}
+
+.btn-sml-txt {
+    font-size: 14px; 
+    margin: 0;
+    padding: 0;
 }
