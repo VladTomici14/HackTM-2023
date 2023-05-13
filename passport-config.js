@@ -15,6 +15,7 @@ function initialize(passport, getUserByEmail, getUserById) {
                 return done(null, false, { message: 'Password incorrect' })
             }
         } catch (e) {
+            console.log(e)
             return done(e)
         }
     }
