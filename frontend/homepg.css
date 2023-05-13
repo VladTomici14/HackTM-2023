@@ -1,0 +1,117 @@
+.left h3 {
+    font-size: 2.5rem;
+    cursor: pointer;
+    color: white;
+}
+.navbar {
+    background: rgb(186,243,255);
+    background: linear-gradient(90deg, rgba(186,243,255,1) 0%, rgba(98,170,255,1) 65%, rgba(186,243,255,1) 100%);
+    border-radius: 1rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    line-height: auto;
+}
+.right ul {
+    display: flex;
+    list-style: none;
+}
+.right ul li a {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 1s;
+}
+.right ul li a:hover {
+    background-color: #fff;
+    border-radius: 7px;
+    color: rgb(21, 91, 203);
+}
+@media screen and (max-width:805px) {
+    .list {
+        width: 100%;
+        height: 100vh;
+        background-color: rgb(21, 91, 203);
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 4rem;
+        left: 100%;
+        transition: all 1s;
+    }
+}
+
+.buttonL {
+    display: inline-block;
+    text-align: center;
+    background:linear-gradient(to top, rgba(98,170,255,1)  ,  #c5c9c9 100%);
+    border: none;
+    cursor: pointer;
+    width: 280px ;
+    height: 350px;
+    color: white;
+    margin-top: 400px;  
+    margin-left:350px;
+    border-radius: 25px;
+    line-height: 1.2;
+}
+.buttonR {
+    display: inline-block;
+    text-align: center;
+    padding: 10px;
+    background:linear-gradient(to top, rgba(98,170,255,1)  ,  #c5c9c9 100%);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 280px;
+    height: 350px;
+    line-height: 1.2;
+    color: white;
+    float: right;
+    margin-right:350px;
+    margin-top:400px;
+    border-radius: 25px;
+}
+
+  .buttonL span {
+    display: block;
+  }
+  .buttonR span{
+    display: block;  
+  }
+  img{
+    width: 100px;
+  }
+  .login{
+    font-size:50px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  .front {
+    background:linear-gradient(to top ,rgba(98,170,255,1)  10%, transparent 40%), 
+                url("Assets/blur-hospital.jpg") no-repeat center;
+    background-size: cover;   
+}
+    .logChoice{
+        font-size:25px;
+    }
+h1 {
+    background-color:rgba(98,170,255,1) ;
+}
+.space{
+    padding-top:100px;
+
+}
+.register{
+    margin-left: 39%;
+    color:white;
+    background: linear-gradient(to bottom, rgba(98,170,255,1) 10% ,  #c5c9c9 100%);
+    font-size: 20px;
+}
+.description
+{
+    color: white;
+    background-color: rgba(98,170,255,1) ;
+}
