@@ -117,5 +117,61 @@ h1 {
 }
 .buttonL:hover
 {
-    background:;
+    background:linear-gradient(to bottom , rgba(98,170,255,1) 10% ,  #c5c9c9 100%);
+   
+    
+}
+.buttonR:hover
+{
+    background:linear-gradient(to bottom , rgba(98,170,255,1) 10% ,  #c5c9c9 100%);
+}
+
+h3 b {
+    font-size : 30px;
+    padding-left:120px;
+    
+}
+
+.description{
+    padding-left: 20px;
+    padding-top: 100px ;
+    padding-bottom:70px;
+
+}
+.description h2
+{
+    font-size: 50px;
+    font-family: 'Lato', sans-serif;
+    padding-left:70px ;
+}
+.description p
+{
+    padding-left:120px;
+    font-size:30px ;
+    margin-right:50px ;
+
+}
+.description h1
+{
+    font-size: 80px;
+    background:linear-gradient(to bottom , rgba(98,170,255,1) 30% ,  #c5c9c9 70% , rgba(98,170,255,1) 100%  );
+    
+    width: fit-content;
+    padding-bottom:20px;
+    
+}
+.antet
+{
+    background-color:  rgba(98,170,255,1) ;
+    padding-left:45%;
+    color: white;
+    text-decoration: none;
+}
+.buttonL .link {
+    text-decoration: none;
+    color: inherit;
+}
+.buttonR .link {
+    text-decoration: none;
+    color: inherit;
 }
