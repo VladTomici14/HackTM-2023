@@ -1,18 +1,35 @@
 body {
     font-family: Arial, sans-serif;
+<<<<<<< HEAD
     background-color: #f2f2f2;
   }
 
   .register-container {
     width: 300px;
+=======
+    background:linear-gradient( to right, rgba(186,243,255,1) 0%, rgba(98,170,255,1) 65%) ;
+  }
+
+  .register-container {
+    width: 500px;
+>>>>>>> f93059e7e91bd88e1f1e781e0e1d17f7abb5899d
     padding: 20px;
     margin: 0 auto;
     margin-top: 100px;
     background-color: #ffffff;
     border: 1px solid #ccc;
+<<<<<<< HEAD
     border-radius: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   }
+=======
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    float :left ;
+    
+}
+>>>>>>> f93059e7e91bd88e1f1e781e0e1d17f7abb5899d
 
   .register-container h2 {
     text-align: center;
@@ -41,4 +58,11 @@ body {
 
   .register-container input[type="submit"]:hover {
     background-color: rgba(98,170,255,1) ; /* Darker red on hover */
+<<<<<<< HEAD
+=======
+  }
+  .space
+  {
+    padding-top: 100px;
+>>>>>>> f93059e7e91bd88e1f1e781e0e1d17f7abb5899d
   }
