@@ -37,7 +37,7 @@
             </nav>
             <div class="row gutters-sm">
                 <table class="table table-striped">
-                    <thead class="thead-light">
+                    <thead class="thead-white">
                         <tr>
                             <th class="text-center" scope="col" colspan="5"><h3>Pacients</h3></th>
                         </tr>
@@ -73,33 +73,35 @@
             <div class="row gutters-sm">
                 <a class="plus-button"  onclick="openPopUp()">+</a>
             </div>
-        </div>
-    </div>
+        </div> <!--  end of main body-->
+    </div> <!-- end of container & blur-->
     <div id="pop-up-action-info" class="pop-up" style="display: none;">
         <div class="pop-up-container card">
             <div class="card-header">
-                </button>
-                <h2 class="text-center">Report</h2>
+                <h2 class="text-center">Add New</h2>
             </div>
             <div class="card-body">
-                <h5 class="card-title">This is a report</h5>
+                <h5 class="card-title">Complete all fields</h5>
                 <form>
                     <div class="form-group">
                         <label for="firstName">Pacient First Name</label>
                         <input type="name" class="form-control" id="firstName" placeholder="First Name"/>  
                     </div>
                     <div class="form-group">
-                        <label for="lastName">Pacient First Name</label>
+                        <label for="lastName">Pacient Last Name</label>
                         <input type="name" class="form-control" id="lastName" placeholder="Last Name"/>  
                     </div>
                     <div class="form-group">
-                        <label for="cnp">Pacient First Name</label>
+                        <label for="cnp">Pacient CNP</label>
                         <input type="number" class="form-control" id="cnp" placeholder="CNP"/> 
                     </div>
                 </form>
                 <div class="row">
                     <div class="col-md-auto mr-auto">
-                        <button type="button" class="btn btn-primary" name="Usefull" onclick="addPacient()">Add Pacient</button>
+                        <button type="button" class="btn btn-primary" name="add" onclick="addPacient()">Add Pacient</button>
+                    </div>
+                    <div class="col-md-auto mr-auto">
+                        <button type="button" class="btn btn-outline-secondary" name="create" onclick="closeAndOpen()">Create New</button>
                     </div>
                     <div class="col-auto">
                         <button type="button" class="btn btn-danger" name="Exit" onclick="closePopUp()">Cancel</button>
@@ -107,20 +109,110 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div id="pop-up-action-info-add" class="pop-up" style="display: none;">
+        <div class="pop-up-container card">
+            <div class="card-header">
+                <h2 class="text-center">Create New</h2>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Complete all fields</h5>
+                <form>
+                    <div class="form-group">
+                        <label for="firstName">Pacient First Name</label>
+                        <input type="name" class="form-control" id="firstName2" placeholder="First Name"/>  
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Pacient Last Name</label>
+                        <input type="name" class="form-control" id="lastName2" placeholder="Last Name"/>  
+                    </div>
+                    <div class="form-group">
+                        <label for="cnp">Pacient CNP</label>
+                        <input type="number" class="form-control" id="cnp2" placeholder="CNP"/> 
+                    </div>
+                    <div class="form-group">
+                        <label for="sex">Pacient Sex</label>
+                        <select id="sex" class="form-control">
+                            <option id="male">M</option>
+                            <option id="female">F</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="residence">Pacient Residence</label>
+                        <input type="text" class="form-control" id="residence" placeholder="Residence"/>  
+                    </div>
+                    <div class="form-group">
+                        <label for="ICSeries">Pacient IC Series</label>
+                        <input type="text" class="form-control" id="ICSeries" placeholder="Series"/>  
+                    </div>
+                    <div class="form-group">
+                        <label for="ICNumber">Pacient IC Number </label>
+                        <input type="text" class="form-control" id="ICNumber" placeholder="Number"/>  
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Pacient Phone Number</label>
+                        <input type="text" class="form-control" id="phone" placeholder="Phone Number"/>  
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col-md-auto mr-auto">
+                        <button type="button" class="btn btn-primary" name="add" onclick="addPacient()">Add Pacient</button>
+                    </div>
+                    <div class="col-auto">
+                        <button type="button" class="btn btn-danger" name="Exit" onclick="closePopUp2()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        function openPopUp() {
-            document.getElementById("pop-up-action-info").style.display = "block";
+        function init() {
+            document.getElementById("firstName").value = "";
+            document.getElementById("lastName").value = "";
+            document.getElementById("cnp").value = "";
+        }
+
+        function initAll() {
+            document.getElementById("firstName2").value = "";
+            document.getElementById("lastName2").value = "";
+            document.getElementById("cnp2").value = "";
+            document.getElementById("male").selected="selected";
+            document.getElementById("residence").value = "";
+            document.getElementById("ICSeries").value = "";
+            document.getElementById("ICNumber").value = "";
+            document.getElementById("phone").value = "";
+        }
+
+        function toggle_blur() {
             const blurElem = document.getElementById("blur");
             blurElem.classList.toggle("active");
         }
 
+        function openPopUp() {
+            document.getElementById("pop-up-action-info").style.display = "block";
+            toggle_blur();
+        }
+
         function closePopUp() {
             document.getElementById("pop-up-action-info").style.display = "none";
-            const blurElem = document.getElementById("blur");
-            blurElem.classList.toggle("active");
-            document.getElementById("firstName").value = "";
-            document.getElementById("lastName").value = "";
-            document.getElementById("cnp").value = "";
+            toggle_blur();
+            init();
+            
+        }
+
+        function closePopUp2() {
+            document.getElementById("pop-up-action-info-add").style.display = "none";
+            toggle_blur();
+            initAll();
+            
+        }
+
+        function closeAndOpen(){
+            document.getElementById("pop-up-action-info").style.display = "none";
+            init();
+            document.getElementById("pop-up-action-info-add").style.display = "block";
         }
     </script>
 </body>
