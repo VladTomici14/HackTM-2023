@@ -85,8 +85,8 @@ app.get('/', /*checkAuthenticated*/ (req, res) => {
     res.render("home.ejs")
 })
 
-app.get("/profilepage", (req, res) => {
-    res.render("profilepage.ejs")
+app.get("/pacientprofile", (req, res) => {
+    res.render("pacientprofile.ejs")
 })
 
 app.get("/pacientprofile", (req, res) => {
@@ -130,7 +130,7 @@ function checkAuthenticated(req, res, next){
 
 function checkNotAuthenticated(req, res, next){
     if(req.isAuthenticated()){
-        return res.redirect("/profilepage")
+        return res.redirect("/pacientprofile")
     }
     next()
 }
