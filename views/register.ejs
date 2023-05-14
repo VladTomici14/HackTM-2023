@@ -37,16 +37,16 @@
             .background-radial-gradient {
                 background-color: hsl(218, 41%, 15%);
                 background-image: radial-gradient(650px circle at 0% 0%,
-                hsl(218, 41%, 35%) 15%,
-                hsl(218, 41%, 30%) 35%,
-                hsl(218, 41%, 20%) 75%,
-                hsl(218, 41%, 19%) 80%,
+                hsl(219, 46%, 47%) 15%,
+                hsl(218, 44%, 35%) 35%,
+                hsl(210, 45%, 28%) 75%,
+                hsl(211, 46%, 27%) 80%,
                 transparent 100%),
                 radial-gradient(1250px circle at 100% 100%,
                         hsl(218, 41%, 45%) 15%,
                         hsl(218, 41%, 30%) 35%,
-                        hsl(218, 41%, 20%) 75%,
-                        hsl(218, 41%, 19%) 80%,
+                        hsl(219, 42%, 38%) 75%,
+                        hsl(208, 36%, 50%) 80%,
                         transparent 100%);
             }
 
@@ -55,7 +55,7 @@
                 width: 220px;
                 top: -60px;
                 left: -130px;
-                background: radial-gradient(#44006b, #ad1fff);
+                background: radial-gradient(#77bfff, #1fddff);
                 overflow: hidden;
             }
 
@@ -65,7 +65,7 @@
                 right: -110px;
                 width: 300px;
                 height: 300px;
-                background: radial-gradient(#44006b, #ad1fff);
+                background: radial-gradient(#77bfff, #1fddff);
                 overflow: hidden;
             }
 
@@ -80,7 +80,7 @@
                 <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
                     <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
                         Welcome to <br />
-                        <span style="color: hsl(218, 81%, 75%)">Desphixs</span>
+                        <span style="color: rgb(118, 168, 255)">NeuroVault</span>
                     </h1>
                     <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
                         Lorem ipsum dolor, sit amet consectetur adipisicing elit.
@@ -100,45 +100,53 @@
                                 <!-- 2 column grid layout with text inputs for the first and last names -->
                                 <div class="row">
 
-                                    <% if (messages.error) { %>
+                                    <!--<% if (messages.error) { %>
                                         <div class="alert alert-danger">
                                             <strong><%= messages.error %> </strong>
                                         </div>
-                                    <% } %>
+                                    <% } %> -->
                                     <h1 class="mb-3 h3">Register</h1>
                                     <div class="col-md-12 mb-4">
                                         <div class="form-outline">
-                                            <input type="text" name="fullname" id="form3Example2" class="form-control" />
                                             <label class="form-label" for="form3Example2">Full Name</label>
+                                            <input type="text" name="fullname" id="form3Example2" class="form-control" />
                                         </div>
                                     </div>
                                 </div>
 
                                 <!-- Email input -->
-                                <div class="form-outline mb-4">
-                                    <input type="email" name="email" id="form3Example3" class="form-control" />
+                                <div class="form-outline mb-4 form-grup">
                                     <label class="form-label" for="form3Example3">Email address</label>
+                                    <input type="email" name="email" id="form3Example3" class="form-control" />
                                 </div>
 
                                 <!-- Password input -->
-                                <div class="form-outline mb-4">
-                                    <input type="password" name="password" id="form3Example4" class="form-control" />
+                                <div class="form-outline mb-4 form-grup">
                                     <label class="form-label" for="form3Example4">Password</label>
+                                    <input type="password" name="password" id="form3Example4" class="form-control" />
                                 </div>
 
-                                <div class="form-outline mb-4">
-                                    <input type="text" name="stage" id="form3Example4" class="form-control" />
+                                <div class="form-outline mb-4 form-grup">
                                     <label class="form-label" for="form3Example4">Stage</label>
+                                    <select name="stage" id="form3Example4" class="form-select">
+                                        <option value="1" id="stage1">1</option>
+                                        <option value="2" id="stage2">2</option>
+                                        <option value="3" id="stage3">3</option>
+                                    </select>
                                 </div>
 
-                                <div class="form-outline mb-4">
-                                    <input type="text" name="psychiatrist" id="form3Example4" class="form-control" />
+                                <div class="form-outline mb-4 form-grup">
                                     <label class="form-label" for="form3Example4">Psychiatrist</label>
+                                    <input type="text" name="psychiatrist" id="form3Example4" class="form-control" />
                                 </div>
 
-                                <div class="form-outline mb-4">
-                                    <input type="text" name="sex" id="form3Example4" class="form-control" />
+                                <div class="form-outline mb-4 form-grup">
                                     <label class="form-label" for="form3Example4">Sex</label>
+                                    <!--<input type="text" name="sex" id="form3Example4" class="form-control" />-->
+                                    <select class="form-select" name="sex" id="form3Example4">
+                                        <option value="male" name="male" id="genderMale">Male</option>
+                                        <option value="female" name="female" id="genderFemale">Female</option>
+                                    </select>
                                 </div>
 
                                 <!-- Submit button -->
