@@ -14,9 +14,13 @@ exports.create = (req, res) => {
 
     // Create a Tutorial
     const tutorial = {
-        title: req.body.title,
-        description: req.body.description,
-        published: req.body.published ? req.body.published : false
+        fullname: req.body.title,
+        email: req.body.email,
+        creation_date: req.body.creation_date,
+        illness: req.body.illness,
+        stage: req.body.stage,
+        psychiatrist: req.body.psychiatrist,
+        sex: req.body.sex
     };
 
     // Save Tutorial in the database
@@ -35,7 +39,7 @@ exports.create = (req, res) => {
 // Retrieve all Tutorials from the database.
 exports.findAll = (req, res) => {
     const title = req.query.title;
-    var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
+    var condition = fullName ? { fullname: { [Op.like]: `%${fullName}%` } } : null;
 
     Tutorial.findAll({ where: condition })
         .then(data => {
@@ -103,7 +107,7 @@ exports.delete = (req, res) => {
         where: { id: id }
     })
         .then(num => {
-            if (num == 1) {
+            if (num === 1) {
                 res.send({
                     message: "Tutorial was deleted successfully!"
                 });
