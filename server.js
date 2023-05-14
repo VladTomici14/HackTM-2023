@@ -21,10 +21,10 @@ const db = require("./app/models");
 
 db.sequelize.sync()
     .then(() => {
-        console.log("Synced db.");
+        console.log("Synced the database");
     })
     .catch((err) => {
-        console.log("Failed to sync db: " + err.message);
+        console.log("Failed to sync the database: " + err.message);
     });
 initializePassport(
     passport,
@@ -57,14 +57,17 @@ app.post("/login", checkNotAuthenticated, passport.authenticate("local", {
 
 // Configuring the register post functionality
 app.post("/register", checkNotAuthenticated, async (req, res) => {
-
     try {
         const hashedPassword = await bcrypt.hash(req.body.password, 10)
         users.push({
             id: Date.now().toString(),
-            name: req.body.name,
+            fullname: req.body.fullname,
             email: req.body.email,
             password: hashedPassword,
+            creation_date: req.body.creation_date,
+            stage: req.body.stage,
+            psychiatrist: req.body.psychiatrist,
+            sex: req.body.sex
         })
         console.log(users); // Display newly registered in the console
         res.redirect("/login")
@@ -75,9 +78,19 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
     }
 })
 
-// Routes
-app.get('/', checkAuthenticated, (req, res) => {
-    res.render("home.ejs", {name: req.user.name})
+// ------------------------------------------------------------
+// ------------------------ routes ----------------------------
+// ------------------------------------------------------------
+app.get('/', /*checkAuthenticated*/ (req, res) => {
+    res.render("home.ejs")
+})
+
+app.get("/profilepage", (req, res) => {
+    res.render("profilepage.ejs")
+})
+
+app.get("/pacientprofile", (req, res) => {
+    res.render("pacientprofile.ejs")
 })
 
 app.get("/home", (req, res) => {
@@ -105,6 +118,9 @@ app.delete("/logout", (req, res) => {
     })
 })
 
+// ------------------------------------------------------------
+// -------- functions for checking authentication -------------
+// ------------------------------------------------------------
 function checkAuthenticated(req, res, next){
     if(req.isAuthenticated()){
         return next()
@@ -114,12 +130,12 @@ function checkAuthenticated(req, res, next){
 
 function checkNotAuthenticated(req, res, next){
     if(req.isAuthenticated()){
-        return res.redirect("/")
+        return res.redirect("/profilepage")
     }
     next()
 }
 
 require("./app/routes/tutorial.routes")(app);
 
-
 app.listen(3000)
+
