@@ -5,7 +5,7 @@ const client = new Client({
     user: "vladt",
     port: 5432,
     password: "garland4",
-    database: "users"
+    database: "Users"
 })
 
 client.query('SELECT * FROM "users"', (err, res) => {
