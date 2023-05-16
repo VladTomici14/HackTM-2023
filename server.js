@@ -88,9 +88,8 @@ app.get('/', /*checkAuthenticated*/ (req, res) => {
 })
 
 app.get("/pacientprofile", (req, res) => {
-    res.render("pacientprofile.ejs", )
+    res.render("pacientprofile.ejs")
 })
-
 app.get("/doctorprofile", (req, res) => {
     res.render("doctorprofile.ejs")
 })
