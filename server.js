@@ -18,6 +18,7 @@ const methodOverride = require("method-override")
 
 
 const db = require("./app/models");
+const path = require("path");
 
 db.sequelize.sync()
     .then(() => {
@@ -34,7 +35,7 @@ initializePassport(
 
 const users = []
 
-
+app.set('view engine', 'ejs');
 app.use(cors(corsOptions))
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
@@ -47,10 +48,11 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(methodOverride("_method"))
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Configuring the register post functionality
 app.post("/login", checkNotAuthenticated, passport.authenticate("local", {
-    successRedirect: "/",
+    successRedirect: "/pacientprofile",
     failureRedirect: "/login",
     failureFlash: true
 }))
@@ -82,20 +84,21 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
 // ------------------------ routes ----------------------------
 // ------------------------------------------------------------
 app.get('/', /*checkAuthenticated*/ (req, res) => {
-    res.render("home.ejs")
+    res.render("home2.ejs")
 })
 
 app.get("/pacientprofile", (req, res) => {
-    res.render("pacientprofile.ejs")
+    res.render("pacientprofile.ejs", )
 })
 
-app.get("/pacientprofile", (req, res) => {
-    res.render("pacientprofile.ejs")
+app.get("/doctorprofile", (req, res) => {
+    res.render("doctorprofile.ejs")
 })
 
 app.get("/home", (req, res) => {
-    res.render("home.ejs")
+    res.render("home2.ejs")
 })
+
 
 app.get('/login', checkNotAuthenticated, (req, res) => {
     res.render("login.ejs")
@@ -103,6 +106,10 @@ app.get('/login', checkNotAuthenticated, (req, res) => {
 
 app.get('/register', checkNotAuthenticated, (req, res) => {
     res.render("register.ejs")
+})
+
+app.get("/registerspecial", checkNotAuthenticatedSpecial, (req, res) => {
+    res.render("registerspecial.ejs")
 })
 // End Routes
 
@@ -122,6 +129,13 @@ app.delete("/logout", (req, res) => {
 // -------- functions for checking authentication -------------
 // ------------------------------------------------------------
 function checkAuthenticated(req, res, next){
+    if(req.isAuthenticated()){
+        return next()
+    }
+    res.redirect("/login")
+}
+
+function checkNotAuthenticatedSpecial(req, res, next){
     if(req.isAuthenticated()){
         return next()
     }
