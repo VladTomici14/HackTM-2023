@@ -18,13 +18,14 @@ const methodOverride = require("method-override")
 
 
 const db = require("./app/models");
+const path = require("path");
 
 db.sequelize.sync()
     .then(() => {
-        console.log("Synced db.");
+        console.log("Synced the database");
     })
     .catch((err) => {
-        console.log("Failed to sync db: " + err.message);
+        console.log("Failed to sync the database: " + err.message);
     });
 initializePassport(
     passport,
@@ -34,7 +35,7 @@ initializePassport(
 
 const users = []
 
-
+app.set('view engine', 'ejs');
 app.use(cors(corsOptions))
 app.use(express.json())
 app.use(express.urlencoded({extended: false}))
@@ -47,24 +48,28 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(methodOverride("_method"))
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Configuring the register post functionality
 app.post("/login", checkNotAuthenticated, passport.authenticate("local", {
-    successRedirect: "/",
+    successRedirect: "/pacientprofile",
     failureRedirect: "/login",
     failureFlash: true
 }))
 
 // Configuring the register post functionality
 app.post("/register", checkNotAuthenticated, async (req, res) => {
-
     try {
         const hashedPassword = await bcrypt.hash(req.body.password, 10)
         users.push({
             id: Date.now().toString(),
-            name: req.body.name,
+            fullname: req.body.fullname,
             email: req.body.email,
             password: hashedPassword,
+            creation_date: req.body.creation_date,
+            stage: req.body.stage,
+            psychiatrist: req.body.psychiatrist,
+            sex: req.body.sex
         })
         console.log(users); // Display newly registered in the console
         res.redirect("/login")
@@ -75,14 +80,24 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
     }
 })
 
-// Routes
-app.get('/', checkAuthenticated, (req, res) => {
-    res.render("home.ejs", {name: req.user.name})
+// ------------------------------------------------------------
+// ------------------------ routes ----------------------------
+// ------------------------------------------------------------
+app.get('/', /*checkAuthenticated*/ (req, res) => {
+    res.render("home2.ejs")
+})
+
+app.get("/pacientprofile", (req, res) => {
+    res.render("pacientprofile.ejs")
+})
+app.get("/doctorprofile", (req, res) => {
+    res.render("doctorprofile.ejs")
 })
 
 app.get("/home", (req, res) => {
-    res.render("home.ejs")
+    res.render("home2.ejs")
 })
+
 
 app.get('/login', checkNotAuthenticated, (req, res) => {
     res.render("login.ejs")
@@ -90,6 +105,10 @@ app.get('/login', checkNotAuthenticated, (req, res) => {
 
 app.get('/register', checkNotAuthenticated, (req, res) => {
     res.render("register.ejs")
+})
+
+app.get("/registerspecial", checkNotAuthenticatedSpecial, (req, res) => {
+    res.render("registerspecial.ejs")
 })
 // End Routes
 
@@ -105,7 +124,17 @@ app.delete("/logout", (req, res) => {
     })
 })
 
+// ------------------------------------------------------------
+// -------- functions for checking authentication -------------
+// ------------------------------------------------------------
 function checkAuthenticated(req, res, next){
+    if(req.isAuthenticated()){
+        return next()
+    }
+    res.redirect("/login")
+}
+
+function checkNotAuthenticatedSpecial(req, res, next){
     if(req.isAuthenticated()){
         return next()
     }
@@ -114,12 +143,12 @@ function checkAuthenticated(req, res, next){
 
 function checkNotAuthenticated(req, res, next){
     if(req.isAuthenticated()){
-        return res.redirect("/")
+        return res.redirect("/pacientprofile")
     }
     next()
 }
 
 require("./app/routes/tutorial.routes")(app);
 
-
 app.listen(3000)
+

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register | NeuroVault</title>
+    <meta name="description" content="User profile page | Simptoms" />
+    <meta name="keywords" content="profile, status" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="ro" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="log.css">
+    <link rel="icon" href="res/logo.ico" tpye="img/ico" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background:linear-gradient( to right, rgba(186,243,255,1) 0%, rgba(98,170,255,1) 65%) ;
+        }
+        .register-container {
+            width: 500px;
+            padding: 20px;
+            margin: 0 auto;
+            margin-top: 100px;
+            background-color: #FFFFFF;
+            border: 1px solid #ccc;
+            border-top-right-radius: 50px;
+            border-bottom-right-radius: 50px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            float :left ;
+        }
+        .register-container h2 {
+            text-align: center;
+            color: #4A4A4A;
+            margin-bottom: 20px;
+        }
+        .register-container label,
+        .register-container input[type="text"],
+        .register-container input[type="password"] {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        .register-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: rgba(186,243,255,1) ; /* Updated to red color */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* Added transition effect */
+        }
+        .register-container input[type="submit"]:hover {
+            background-color: rgba(98,170,255,1) ; /* Darker red on hover */
+        }
+        .space
+        {
+            padding-top: 100px;
+        }
+    </style>
+</head>
+<body>
+<div class="wraper">
+    <div class="register-container">
+        <h2>Register</h2>
+        <div class="form-group">
+            <label for="fullname">Full Name</label>
+            <input class="form-control" type="name" id="fullname" name="fullname" placeholder="Full Name" required />
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input class="form-control" type="email" id="email" name="email" placeholder="Email" required />
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input class="form-control" type="password" id="password" name="password" placeholder="Password" required />
+        </div>
+        <input class="btn btn-outline-prymary" type="submit" value="Login" />
+    </div>
+</div>
+</body>
+</html>
