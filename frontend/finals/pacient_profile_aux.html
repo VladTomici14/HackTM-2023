@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>NeuroVault | Pacient profile</title>
+    <meta name="description" content="User profile page | Simptoms" />
+    <meta name="keywords" content="profile, status" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="ro" />
+    <meta charset="utf-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="TestProfile-style.css" />
+    <link rel="icon" href="../public/logo.ico" tpye="img/ico"/>
+    <style>
+        .card {
+            box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+        }
+
+        .card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            word-wrap: break-word;
+            background-color: #fff;
+            background-clip: border-box;
+            border: 0 solid rgba(0,0,0,.125);
+            border-radius: .25rem;
+        }
+
+        .card-body {
+            flex: 1 1 auto;
+            min-height: 1px;
+            padding: 1rem;
+        }
+
+        .gutters-sm {
+            margin-right: -8px;
+            margin-left: -8px;
+        }
+
+        .gutters-sm>.col, .gutters-sm>[class*=col-] {
+            padding-right: 8px;
+            padding-left: 8px;
+        }
+        .mb-3, .my-3 {
+            margin-bottom: 1rem!important;
+        }
+
+        .bg-gray-300 {
+            background-color: #e2e8f0;
+        }
+        .h-100 {
+            height: 100%!important;
+        }
+        .shadow-none {
+            box-shadow: none!important;
+        }
+
+        .breadcrumb {
+            margin-bottom: 0;
+            margin-top: 10px;
+        }
+
+
+        .left h3 {
+            font-size: 2.5rem;
+            cursor: pointer;
+            color: white;
+        }
+
+        .nav-h4 {
+            padding-bottom: 0;
+        }
+
+        .navbar {
+            background: rgb(186,243,255);
+            background: linear-gradient(90deg, rgba(186,243,255,1) 0%, rgba(98,170,255,1) 65%, rgba(186,243,255,1) 100%);
+            border-radius: 1rem;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            line-height: auto;
+            padding-bottom: 0;
+        }
+
+        .right ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .right ul li a {
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: white;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 1s;
+        }
+
+        .right ul li a:hover {
+            background-color: #fff;
+            border-radius: 7px;
+            color: rgb(21, 91, 203);
+        }
+
+
+        @media screen and (max-width:805px) {
+            .list {
+                width: 100%;
+                height: 100vh;
+                background-color: rgb(21, 91, 203);
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                top: 4rem;
+                left: 100%;
+                transition: all 1s;
+            }
+        }
+
+        .pop-up {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            overflow: auto;
+            z-index: 3;
+            padding-top: 100px;
+            height: 100%;
+            width: 100%;
+
+        }
+
+        .pop-up-container {
+            width: 900px;
+            position: relative;
+            animation: pop-up-move 0.4s;
+            margin: auto;
+            padding: 0;
+            outline: 0;
+            border: 1px solid rgba(0,0,0,.2);
+        }
+
+        @keyframes pop-up-move {
+            0% {
+                top: -300px;
+                opacity: 0;
+            }
+
+            100% {
+                top: 0;
+                opacity: 1;
+            }
+        }
+
+        .pop-up-close {
+            right: 0;
+            padding-top:10px
+        }
+
+        .modal-content {
+            border-radius: 20px;
+        }
+
+        .container#blur.active {
+            filter: blur(3px);
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .pecs-card {
+            border: 1px solid rgba(0,0,0,.2);
+        }
+
+        .btn-sml-txt {
+            font-size: 14px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .plus-button {
+            color: gray !important;
+            background-color: transparent;
+            border: none;
+            display: inline-block;
+            vertical-align: middle;
+            text-align: center;
+            cursor: pointer;
+            white-space: nowrap;
+            border-radius: 50%;
+            padding-left: 40px;
+            padding-right: 40px;
+            padding-top:0;
+            padding-bottom: 15px;
+            font-size: 80px;
+            margin: auto;
+        }
+
+        .plus-button:hover {
+            background-color: rgb(197, 197, 197);
+            text-decoration: none;
+            color: white !important;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container" id="blur">
+    <nav class="navbar">
+        <div class="left">
+            <a href="/home"><h3 class="nav-h3">NeuroVault</h3></a>
+        </div>
+        <div class="right">
+            <ul class="list">
+                <li><a href="/home">Home</a></li>
+                <li><a href="/logout">Log out</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="main-body">
+
+        <!--- not quite sure if we need to have a breadcrumb --->
+        <!-- Breadcrumb -->
+<!--        <nav aria-label="breadcrumb" class="main-breadcrumb">-->
+<!--            <ol class="breadcrumb">-->
+<!--                <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>-->
+<!--                <li class="breadcrumb-item active" id="UserID" aria-current="page">UserID</li> &lt;!&ndash; se adauga id-ul sau numele pacientului&ndash;&gt;-->
+<!--            </ol>-->
+<!--        </nav>-->
+        <!-- /Breadcrumb -->
+
+        <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+
+                            <!--- TODO: change the icon of the profile pic based on gender --->
+
+                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"
+                                 class="rounded-circle" width="150">
+                            <div class="mt-3">
+
+                                <!--- TODO: change the name of the user from the login form --->
+
+                                <h4 id="profileFullName">John Doe</h4>
+                                <p class="text-secondary mb-1" id="profileLevel">ASD - Level 1</p> <!-- TODO: what is this ? -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-3">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                            <h6 class="mb-0" id="dataFullName">Full Name</h6>
+                            <span class="text-secondary" id="dataFullName">Joe</span> <!--to be added-->
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                            <h6 class="mb-0">Sex</h6>
+                            <span class="text-secondary" id="dataSex">M (male)</span> <!--to be added-->
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                            <h6 class="mb-0">Creation Date</h6>
+                            <span class="text-secondary" id="dataCreationDate">12 May 2023</span> <!--to be added-->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Illness Details</h5>
+                        <hr/>
+                        <div class="row">
+                            <div class="col-sm-3"><h6 class="mb-0">Stage</h6></div>
+
+                            <!--- TODO: import this from the database --->
+                            <div class="col-sm-9 text-secondary" id="profile Level">ASD - Level 1</div> <!--- TODO: do we really need this? --->
+
+                        </div>
+                        <hr/>
+                        <div class="row">
+                            <div class="col-sm-3"><h6 class="mb-0">Main Psychiatrist</h6></div>
+
+                            <!--- TODO: import this from the database --->
+                            <div class="col-sm-9 text-secondary" id="mainDoctor">Jessica Lipschitz</div>
+
+                        </div>
+                        <hr/>
+                        <div class="row">
+                            <div class="col-sm-12">
+
+                                <!--- TODO: think about the implementation of the edit button --->
+                                <a class="btn btn-info " target="__blank" style="color:white;" onclick="showPopUp2()">Edit</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--<div class="row gutters-sm">
+
+                </div>-->
+                <hr/>
+                <div class="row-md-8">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">About Me</h5>
+                            <hr/>
+                            <div class="row">
+
+                                <!--- TODO: import this from the database --->
+
+                                <div class="col-sm-12 text-secondary text-center" id="description">
+                                    This is a short description about me. My legal guardian has the right
+                                    to complete this with anything out of the ordinary that can help anyone
+                                    that has or will have acces to my profile page.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr/>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="text-center">Feelings</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <p class="text-secondary">
+                            *BC = Behavioral Consequences;
+                        </p>
+                        <p class="text-secondary">
+                            *LSD = Lower sensory threshold on;
+                        </p>
+                    </div>
+                </div>
+                <div class="row gutters-sm">
+                    <div class="col-sm-6 mb-3">
+                        <div class="card mb-3 pecs-card">
+                            <div class="card-body">
+                                <h5 class="text-center">Frustration</h5>
+                                <hr/>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <button type="button" class="btn btn-primary btn-md" name="Usefull" onclick="presentPopUpFrom(1)">Causes</button>
+                                    </div>
+                                    <div class="col">
+                                        <button type="button" class="btn btn-secondary btn-md" name="Useless" onclick="presentPopUpFrom(2)">BC</button>
+                                    </div>
+                                    <div class="col">
+                                        <button type="button" class="btn btn-info btn-md" name="Exit" onclick="presentPopUpFrom(3)">Prevention</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mb-3 pecs-card">
+                            <div class="card-body">
+                                <h5 class="text-center">Anxiety</h5>
+                                <hr/>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <button type="button" class="btn btn-primary btn-md" name="Usefull" onclick="presentPopUpFrom(4)">Causes</button>
+                                    </div>
+                                    <div class="col">
+                                        <button type="button" class="btn btn-secondary btn-md" name="Useless" onclick="presentPopUpFrom(5)">BC</button>
+                                    </div>
+                                    <div class="col">
+                                        <button type="button" class="btn btn-info btn-md" name="Exit" onclick="presentPopUpFrom(6)">Prevention</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mb-3">
+                            <div class="card-body pecs-card">
+                                <h5 class="text-center">Happiness</h5>
+                                <hr/>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <button type="button" class="btn btn-primary btn-md" name="Usefull" onclick="presentPopUpFrom(7)">Causes</button>
+                                    </div>
+                                    <div class="col">
+                                        <button type="button" class="btn btn-secondary btn-md" name="Useless" onclick="presentPopUpFrom(8)">BC</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <div class="card mb-3 pecs-card">
+                            <div class="card-body">
+                                <h5 class="text-center">Sadness</h5>
+                                <hr/>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <button type="button" class="btn btn-primary btn-md" name="Usefull" onclick="presentPopUpFrom(9)">Causes</button>
+                                    </div>
+                                    <div class="col">
+                                        <button type="button" class="btn btn-secondary btn-md" name="Useless" onclick="presentPopUpFrom(10)">BC</button>
+                                    </div>
+                                    <div class="col">
+                                        <button type="button" class="btn btn-info btn-md" name="Exit" onclick="presentPopUpFrom(11)">Prevention</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mb-3 pecs-card">
+                            <div class="card-body">
+                                <h5 class="text-center">Anger</h5>
+                                <hr/>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <button type="button" class="btn btn-primary btn-md" name="Usefull" onclick="presentPopUpFrom(12)">Causes</button>
+                                    </div>
+                                    <div class="col">
+                                        <button type="button" class="btn btn-secondary btn-md" name="Useless" onclick="presentPopUpFrom(13)">BC</button>
+                                    </div>
+                                    <div class="col">
+                                        <button type="button" class="btn btn-info btn-md" name="Exit" onclick="presentPopUpFrom(14)">Prevention</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mb-3 pecs-card">
+                            <div class="card-body">
+                                <h5 class="text-center">Sensory Overload</h5>
+                                <hr/>
+                                <div class="row text-center">
+                                    <div class="col">
+                                        <button type="button" class="btn btn-primary btn-md" name="Usefull" onclick="presentPopUpFrom(15)">LSD</button>
+                                    </div>
+                                    <div class="col">
+                                        <button type="button" class="btn btn-secondary btn-md" name="Useless" onclick="presentPopUpFrom(16)">Overload</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="text-center">PECS System</h2>
+                <hr/>
+            </div>
+            <div class="row" id="presentCards">
+                <div class="card-deck">
+                    <div class="card pecs-card">
+
+                        <!--- TODO: import this from the database --->
+                        <a onclick="showPopUp3()"><img class="card-img-top" src="http://info.tm.edu.ro:8088/~vtomici/pictures/id1/image-11.png" alt="Card image cap"/></a>
+                        <hr/>
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+<!--                        <div class="card-footer">-->
+<!--                            <small class="text-muted">Last updated 3 mins ago</small>-->
+<!--                        </div>-->
+                    </div>
+                    <div class="card pecs-card">
+
+                        <!--- TODO: import this from the database --->
+                        <a onclick="showPopUp3()"><img class="card-img-top" src="http://info.tm.edu.ro:8088/~vtomici/pictures/id1/image-10.png" alt="Card image cap"/></a>
+                        <hr/>
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                        </div>
+<!--                        <div class="card-footer">-->
+<!--                            <small class="text-muted">Last updated 3 mins ago</small>-->
+<!--                        </div>-->
+                    </div>
+                    <div class="card pecs-card">
+
+                        <!--- TODO: import this from the database --->
+                        <a onclick="showPopUp3()"><img class="card-img-top" src="http://info.tm.edu.ro:8088/~vtomici/pictures/id1/image-1.png" alt="Card image cap"/></a>
+                        <hr/>
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                        </div>
+<!--                        <div class="card-footer">-->
+<!--                            <small class="text-muted">Last updated 3 mins ago</small>-->
+<!--                        </div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/><br/>
+        <div class="row gutters-sm">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th class="text-center" scope="col" colspan="4">Doctors</th>
+                </tr>
+                </thead>
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Occupation</th>
+                    <th scope="col">Contribution</th>
+                </tr>
+                </thead>
+                <tbody id="doctorsTable">
+
+                <!--- TODO: create a list of doctors for each pacient; the list can be modified in time --->
+                <tr>
+                    <th scope="row">1</th>
+                    <th>Jessica Lipschitz</th>
+                    <th>Psychiatrist</th>
+                    <th><button type="button" class="btn btn-outline-dark btn-md" onclick="presentPopUpFrom(19)">Actions</button></th>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<hr/+>
+<div class="footer">
+    <p class="text-center footer-text">NeuroVault | Romania<br>A @Wizztech 2023 website</p>
+</div>
+<div id="pop-up-action-info" class="pop-up" style="display: none;">
+    <div class="pop-up-container card">
+        <div class="card-header">
+            <!--</button> -->
+            <h2 class="text-center" id="pop-up-header">Report</h2>
+        </div>
+        <div class="card-body" id="pop-up-tat">
+            <h5 class="card-title" id="pop-up-title">This is a report</h5>
+            <p class="card_text" id="pop-up-text">123</p>
+            <div class="row" id="pop-up-buttons">
+                <div class="col-md-auto mr-auto">
+                    <button type="button" class="btn btn-primary" name="Usefull" onclick="rateUsefull()">Rate Usefull</button>
+                </div>
+                <div class="col-md">
+                    <button type="button" class="btn btn-secondary" name="Useless" onclick="rateNotUsefull()">Rate Not Usefull</button>
+                </div>
+                <div class="col-auto">
+                    <button type="button" class="btn btn-danger" name="Exit" onclick="closePopUp()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="pop-up-action-edit1" class="pop-up" style="display: none;">
+    <div class="pop-up-container card">
+        <div class="card-header">
+            <h2 class="text-center" id="pop-up-header">Edit Data</h2>
+        </div>
+        <div class="card-body" id="pop-up-tat">
+            <form>
+                <div class="form-group">
+<!--                    <label for="fullname">Full Name</label>-->
+<!--                    <input type="name" class="form-control" id="fullName" placeholder="Name" required />-->
+                </div>
+                <div class="form-group">
+                    <label for="stage">Stage: ASD Level</label>
+                    <select class="form-control" id="stage">
+                        <option id="stage1">1</option>
+                        <option id="stage2">2</option>
+                        <option id="stage3">3</option>
+                    </select>
+                </div>
+
+            </form>
+            <div class="row" id="pop-up-buttons">
+                <div class="col-md-auto mr-auto">
+                    <button class="btn btn-outline-primary" type="submit" onclick="closePopUp2()">Save Changes</button>
+                </div>
+                <div class="col-auto">
+                    <button type="button" class="btn btn-danger" name="cancel" onclick="closePopUp2()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="pop-up-action-image" class="pop-up" style="display: none;">
+    <div class="pop-up-container card">
+        <div class="card-header">
+            <h2 class="text-center" id="pop-up-header">Image</h2>
+        </div>
+        <!--<div class="card-body" id="pop-up-tat">
+        </div> -->
+        <img class="card-img-top" src="http://info.tm.edu.ro:8088/~vtomici/pictures/id1/image-1.png" alt="Card image cap" />
+        <div class="card-body">
+            <div class="row justify-content-between">
+                <div class="col-md-auto mr-auto"></div>
+                <div class="col-md-auto">
+                    <button tpye="button" class="btn btn-danger" name="cancel" onclick="closePopUp3()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function toggle_blur() {
+        const blurElem = document.getElementById("blur");
+        blurElem.classList.toggle("active");
+    }
+
+    function showPopUp() {
+        document.getElementById("pop-up-action-info").style.display = "block";
+        toggle_blur();
+    }
+
+    function showPopUp2() {
+        document.getElementById("pop-up-action-edit1").style.display = "block";
+        toggle_blur();
+    }
+
+    function showPopUp3() {
+        document.getElementById("pop-up-action-image").style.display = "block";
+        toggle_blur();
+    }
+
+    function loadTextToPopUp(x) {
+        const header = document.getElementById("pop-up-header");
+        const title = document.getElementById("pop-up-title");
+        const text = document.getElementById("pop-up-text");
+        switch(x.toString()) {
+            case "1":
+                break;
+            case "2":
+                break;
+            case "3":
+                break;
+            case "4":
+                break;
+            case "5":
+                break;
+            case "6":
+                break;
+            case "7":
+                break;
+            case "8":
+                break;
+            case "9":
+                break;
+            case "10":
+                break;
+            case "11":
+                break;
+            case "12":
+                break;
+            case "13":
+                break;
+            case "14":
+                break;
+            case "15":
+                break;
+            case "16":
+                break;
+            case "19":
+                header.innerHTML = "Report";
+                title.innerHTML = "This is a report";
+                text.innerHTML = "This is some text wrote by my own therapist. Hope it helps. If not, just say it!";
+                break;
+            default:
+                break;
+        }
+    }
+
+    function closePopUp() {
+        document.getElementById("pop-up-action-info").style.display = "none";
+        toggle_blur();
+    }
+
+    function closePopUp3() {
+        document.getElementById("pop-up-action-image").style.display = "none";
+        toggle_blur();
+    }
+
+    function closePopUp2() {
+        document.getElementById("pop-up-action-edit1").style.display = "none";
+        toggle_blur();
+        // document.getElementById("fullName").value="";
+        document.getElementById("stage1").selected="selected";
+    }
+
+    function presentPopUpFrom(x) {
+        loadTextToPopUp(x);
+        showPopUp();
+    }
+</script>
+<script>
+    //userID, firstName, lastName, autismLevel, sex, residence, ICSeries, ICNumber, telephone, creationDate
+    //mainDoctorName, legalGuardianNotes
+    //numOfPhotos /*from PECS*/
+    // // const fullName = firstName + " " + lastName;
+    // document.getElementById("UserID").innerHTML = userID;
+    // document.getElementById("profileFullName").innerHTML = fullName;
+    document.getElementById("profileLevel").innerHTML = "ASD - Level " + autismLevel;
+    // document.getElementById("dataFirstName").innerHTML = firstName;
+    document.getElementById("dataLastName").innerHTML = lastName;
+    document.getElementById("dataSex").innerHTML = sex;
+    document.getElementById("dataResidence").innerHTML = residence;
+    document.getElementById("dataICSeries").innerHTML = ICSeries;
+    document.getElementById("dataICNumber").innerHTML = ICNumber;
+    document.getElementById("dataTelephone").innerHTML = telephone;
+    document.getElementById("dataCreationDate").innerHTML = creationDate;
+    document.getElementById("mainDoctor").innerHTML = mainDoctorName;
+    document.getElementById("description").innerHTML = legalGuardianNotes;
+
+    //cards(as variables idk), numOfPhotos=numOfCards
+    var cardDecksCode = "";
+    var topBound = Math.ceil(numOfPhotos/3);
+    for(let i=1;i<=topBound;i++) {
+        cardDecksCode += "<div class=\"card-deck\">";
+        for(let j=1;j<4;j++) {
+            let currentCard = (i-1)*3+j;
+            var currentTitle = cards[currentCard].title;  //to get
+            var currentText = cards[currentCard].text;  //to get
+            var imgName = userID + "_" + currentCard + ".png";
+            var imgPath = "\"res/" + imgName + "\"";
+
+            cardDecksCode += "<div class=\"card pecs-card\">";
+            cardDecksCode += "<img class=\"card-img-top\" src=" + imgPath + " alt=\"Card image cap\"/><hr/><div class=\"card-body\">";
+            cardDecksCode += "<h5 class=\"card-title\">" + currentTitle + "</h5>"; /*add card title*/
+            cardDecksCode += "<p class=\"card-text\">" + currentText + "</p></div>"; /*add card text*/
+            cardDecksCode += "<div class=\"card-footer\"><small class=\"text-muted\">Last updated 3 mins ago</small></div></div>";
+        }
+        cardDecksCode += "</div>";
+    }
+    document.getElementById("presentCards").innerHTML = cardDecksCode;
+
+    //numOfDoctors
+    var doctorTableCode = ""
+    for(let i=1;i<=numOfDoctors;i++) {
+        // var currentFullName = doctors[i].firstName + " " + doctors[i].lastName;
+        var currentOcupation = doctors[i].occupation;
+        doctorTableCode += "<tr><th scope=\"row\">" + i + "</th>";
+        doctorTableCode += "<th>" + currentFullName + "</th>";
+        doctorTableCode += "<th>" + currentOcupation + "</th>";
+        doctorTableCode += "<th><button type=\"button\" class=\"btn btn-outline-dark btn-md\" onclick=\"presentPopUpFrom(20)\">Actions</button></th></tr>";
+    }
+    document.getElementById("doctorsTable").innerHTML = doctorTableCode;
+</script>
+</body>
+
+</html>
