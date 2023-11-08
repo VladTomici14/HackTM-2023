@@ -57,7 +57,7 @@
     margin-left:350px;
     border-radius: 25px;
     line-height: 1.2;
-    transition : background 0.3s;
+    /*transition : background 0.3s;*/
 }
 .buttonR {
     display: inline-block;
@@ -175,4 +175,10 @@ h3 b {
 .buttonR .link {
     text-decoration: none;
     color: inherit;
+}
+
+.wraper {
+    background:linear-gradient(to top ,rgba(98,170,255,1)  10%, transparent 40%), 
+    url("Assets/blur-hospital.jpg") no-repeat center;
+background-size: cover; 
 }

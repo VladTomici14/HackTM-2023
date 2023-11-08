@@ -1,0 +1,178 @@
+:root {
+    --var1: 0;
+    --var2: 0;
+}
+
+.left h3 {
+    font-size: 2.5rem;
+    cursor: pointer;
+    color: white;
+}
+.navbar {
+    background: rgb(186,243,255);
+    background: linear-gradient(90deg, rgba(186,243,255,1) 0%, rgba(98,170,255,1) 65%, rgba(186,243,255,1) 100%);
+    border-radius: 1rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    line-height: auto;
+}
+.right ul {
+    display: flex;
+    list-style: none;
+}
+.right ul li a {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 1s;
+}
+.right ul li a:hover {
+    background-color: #fff;
+    border-radius: 7px;
+    color: rgb(21, 91, 203);
+}
+@media screen and (max-width:805px) {
+    .list {
+        width: 100%;
+        height: 100vh;
+        background-color: rgb(21, 91, 203);
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 4rem;
+        left: 100%;
+        transition: all 1s;
+    }
+}
+
+.login-button {
+    display: inline-block;
+    text-align: center;
+    /*background:linear-gradient(to top, #c5c9c9 0%, #62aaff  0%,  #c5c9c9 100%);*/
+    border: none;
+    cursor: pointer;
+    width: 20%;
+    height: 350px;
+    color: white;
+    margin-top: 400px;  
+    border-radius: 25px;
+    line-height: 1.2;
+    animation: button-gradient 0.4s;
+}
+
+
+
+.login-button span {
+    display: block;
+}
+
+.buttonLeft {
+    margin-left:20%;
+    float: left;
+    background:linear-gradient(to top, #c5c9c9 0%, #62aaff  var(--var1),  #c5c9c9 100%);
+}
+
+.buttonRight {
+    margin-right:20%;
+    float: right;
+    background:linear-gradient(to top, #c5c9c9 0%, #62aaff  var(--var2),  #c5c9c9 100%);
+}
+
+
+  img{
+    width: 100px;
+  }
+  .login{
+    font-size:50px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  .front {
+    background:linear-gradient(to top ,rgba(98,170,255,1)  10%, transparent 40%), 
+                url("Assets/blur-hospital.jpg") no-repeat center;
+    background-size: cover;   
+}
+    .logChoice{
+        font-size:25px;
+    }
+h1 {
+    background-color:rgba(98,170,255,1) ;
+}
+.space{
+    padding-top:100px;
+
+}
+.register{
+    margin-left: 39%;
+    color:white;
+    background: linear-gradient(to bottom, rgba(98,170,255,1) 10% ,  #c5c9c9 100%);
+    font-size: 20px;
+}
+.description
+{
+    color: white;
+    background-color: rgba(98,170,255,1) ;
+}
+.buttonL:hover
+{
+    background:linear-gradient(to bottom , rgba(98,170,255,1) 10% ,  #c5c9c9 100%);
+   
+    
+}
+.buttonR:hover
+{
+    background:linear-gradient(to bottom , rgba(98,170,255,1) 10% ,  #c5c9c9 100%);
+}
+
+h3 b {
+    font-size : 30px;
+    padding-left:120px;
+    
+}
+
+.description{
+    padding-left: 20px;
+    padding-top: 100px ;
+    padding-bottom:70px;
+
+}
+.description h2
+{
+    font-size: 50px;
+    font-family: 'Lato', sans-serif;
+    padding-left:70px ;
+}
+.description p
+{
+    padding-left:120px;
+    font-size:30px ;
+    margin-right:50px ;
+
+}
+.description h1
+{
+    font-size: 80px;
+    background:linear-gradient(to bottom , rgba(98,170,255,1) 30% ,  #c5c9c9 70% , rgba(98,170,255,1) 100%  );
+    
+    width: fit-content;
+    padding-bottom:20px;
+    
+}
+.antet
+{
+    background-color:  rgba(98,170,255,1) ;
+    padding-left:45%;
+    color: white;
+    text-decoration: none;
+}
+.buttonL .link {
+    text-decoration: none;
+    color: inherit;
+}
+.buttonR .link {
+    text-decoration: none;
+    color: inherit;
+}
