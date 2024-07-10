@@ -21,6 +21,9 @@ This would make future specialists that interact with autistic people understand
 ### PECS System
 The Picture Exchange Communication System (PECS) is a form of augmentative and alternative communication primarily used to help individuals with autism and other communication disorders develop functional communication skills.
 
+## Project development 
+We have used web technologies for creating this platform: HTML, CSS, JavaScript, PHP. For the database, we have used PostgreSQL.  
+
 ## Team members 
 - Vlad Tomici -> Backend Development
 - Cosmin Murariu -> Frontend Development
